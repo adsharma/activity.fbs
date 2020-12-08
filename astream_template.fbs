@@ -1,0 +1,81 @@
+// Generated file. Do not modify
+
+table Date {
+  ts: ulong;
+}
+
+table Duration {
+  duration: ulong;
+}
+
+table Language {
+  code: string;
+}
+
+table URL {
+  url: string;
+}
+
+table RelativeLink {
+  link: string;
+}
+
+table MimeType {
+  encoding: string;
+}
+
+table Bool {
+  val: bool;
+}
+
+table String {
+  val: string;
+}
+
+// Core Types not auto defined
+table IntransitiveActivity {
+}
+
+{%- for table, body in tables.items() %}
+{%- set mybases = bases[table] %}
+{%- set mybases = " (" + ",".join(mybases) + ")" if mybases else "" %}
+
+table {{table}}{{mybases}} {
+{%- for p, t in body.items() %}
+    {{p}}: {{t}};
+{%- endfor %}
+}
+{% endfor %}
+
+{%- macro union_body(types) %}
+{%- for t in types %}
+{%- set non_primitive = t %}
+{%- if t == 'string' %}
+{%- set non_primitive = 'String' %}
+{%- endif %}
+{%- if t == 'bool' %}
+{%- set non_primitive = 'Bool' %}
+{%- endif %}
+    {{non_primitive}},
+{%- endfor %}
+{%- endmacro %}
+
+{%- for types, union in unions.items() %}
+
+union {{union}} {
+{{-union_body(types)}}
+}
+{% endfor %}
+
+{%- for activity in activities %}
+
+table {{activity}} (Activity) {
+}
+
+{% endfor %}
+
+union ActivityStream { {{union_body(activities)}}
+}
+
+union Actor { {{union_body(actors)}}
+}

@@ -1,0 +1,450 @@
+// Generated file. Do not modify
+
+table Date {
+  ts: ulong;
+}
+
+table Duration {
+  duration: ulong;
+}
+
+table Language {
+  code: string;
+}
+
+table URL {
+  url: string;
+}
+
+table RelativeLink {
+  link: string;
+}
+
+table MimeType {
+  encoding: string;
+}
+
+table Bool {
+  val: bool;
+}
+
+table String {
+  val: string;
+}
+
+// Core Types not auto defined
+table IntransitiveActivity {
+}
+
+table Activity {
+    actor: ObjectOrLink;
+    instrument: ObjectOrLink;
+    origin: ObjectOrLink;
+    result: ObjectOrLink;
+    target: ObjectOrLink;
+}
+
+
+table Object {
+    attachment: ObjectOrLink;
+    attributedTo: ObjectOrLink;
+    audience: ObjectOrLink;
+    bcc: ObjectOrLink;
+    bto: ObjectOrLink;
+    cc: ObjectOrLink;
+    context: ObjectOrLink;
+    generator: ObjectOrLink;
+    icon: ImageOrLink;
+    image: ImageOrLink;
+    inReplyTo: ObjectOrLink;
+    location: ObjectOrLink;
+    object: ObjectOrLink;
+    preview: ObjectOrLink;
+    replies: Collection;
+    tag: ObjectOrLink;
+    to: ObjectOrLink;
+    url: URLOrLink;
+    altitude: float;
+    content: string;
+    name: string;
+    duration: Duration;
+    mediaType: MimeType;
+    endTime: Date;
+    published: Date;
+    source_property: ObjectOrLink;
+    startTime: Date;
+    summary: string;
+    updated: Date;
+    likes: MaybeOrderedCollection;
+    shares: MaybeOrderedCollection;
+}
+
+
+table Link {
+    attributedTo: ObjectOrLink;
+    preview: ObjectOrLink;
+    name: string;
+    height: uint;
+    href: URL;
+    hreflang: Language;
+    mediaType: MimeType;
+    rel: RelativeLink;
+    summary: string;
+    width: uint;
+}
+
+
+table Collection {
+    current: PageOrLink;
+    first: PageOrLink;
+    last: PageOrLink;
+    items: ObjectOrLink;
+    totalItems: uint;
+}
+
+
+table OrderedCollection {
+    orderedItems: ObjectOrLink;
+}
+
+
+table Question (IntransitiveActivity) {
+    oneOf: ObjectOrLink;
+    anyOf: ObjectOrLink;
+    closed: Various;
+}
+
+
+table CollectionPage {
+    next: PageOrLink;
+    prev: PageOrLink;
+    partOf: CollectionOrLink;
+}
+
+
+table Place {
+    accuracy: float;
+    latitude: float;
+    longitude: float;
+    radius: float;
+    units: StringOrURL;
+}
+
+
+table Image {
+    height: uint;
+    width: uint;
+}
+
+
+table OrderedCollectionPage {
+    startIndex: uint;
+}
+
+
+table Relationship {
+    subject: ObjectOrLink;
+    relationship: Object;
+}
+
+
+table Profile {
+    describes: Object;
+}
+
+
+table Tombstone {
+    formerType: ObjectOrString;
+    deleted: Date;
+}
+
+
+table Application (Object) {
+    inbox: OrderedCollection;
+    outbox: OrderedCollection;
+    following: MaybeOrderedCollection;
+    followers: MaybeOrderedCollection;
+    liked: MaybeOrderedCollection;
+    streams: MaybeOrderedCollection;
+    preferredUsername: string;
+}
+
+
+table Group (Object) {
+    inbox: OrderedCollection;
+    outbox: OrderedCollection;
+    following: MaybeOrderedCollection;
+    followers: MaybeOrderedCollection;
+    liked: MaybeOrderedCollection;
+    streams: MaybeOrderedCollection;
+    preferredUsername: string;
+}
+
+
+table Organization (Object) {
+    inbox: OrderedCollection;
+    outbox: OrderedCollection;
+    following: MaybeOrderedCollection;
+    followers: MaybeOrderedCollection;
+    liked: MaybeOrderedCollection;
+    streams: MaybeOrderedCollection;
+    preferredUsername: string;
+}
+
+
+table Person (Object) {
+    inbox: OrderedCollection;
+    outbox: OrderedCollection;
+    following: MaybeOrderedCollection;
+    followers: MaybeOrderedCollection;
+    liked: MaybeOrderedCollection;
+    streams: MaybeOrderedCollection;
+    preferredUsername: string;
+}
+
+
+table Service (Object) {
+    inbox: OrderedCollection;
+    outbox: OrderedCollection;
+    following: MaybeOrderedCollection;
+    followers: MaybeOrderedCollection;
+    liked: MaybeOrderedCollection;
+    streams: MaybeOrderedCollection;
+    preferredUsername: string;
+}
+
+
+union PageOrLink {
+    CollectionPage,
+    Link,
+}
+
+
+union ImageOrLink {
+    Image,
+    Link,
+}
+
+
+union CollectionOrLink {
+    Link,
+    Collection,
+}
+
+
+union ObjectOrLink {
+    Link,
+    Object,
+}
+
+
+union Various {
+    Object,
+    Link,
+    Date,
+    Bool,
+}
+
+
+union ObjectOrString {
+    Object,
+    String,
+}
+
+
+union MaybeOrderedCollection {
+    OrderedCollection,
+    Collection,
+}
+
+
+union URLOrLink {
+    URL,
+    Link,
+}
+
+
+union StringOrURL {
+    String,
+    URL,
+}
+
+
+table Accept (Activity) {
+}
+
+
+
+table TentativeAccept (Activity) {
+}
+
+
+
+table Add (Activity) {
+}
+
+
+
+table Arrive (Activity) {
+}
+
+
+
+table Create (Activity) {
+}
+
+
+
+table Delete (Activity) {
+}
+
+
+
+table Follow (Activity) {
+}
+
+
+
+table Ignore (Activity) {
+}
+
+
+
+table Join (Activity) {
+}
+
+
+
+table Leave (Activity) {
+}
+
+
+
+table Like (Activity) {
+}
+
+
+
+table Offer (Activity) {
+}
+
+
+
+table Invite (Activity) {
+}
+
+
+
+table Reject (Activity) {
+}
+
+
+
+table TentativeReject (Activity) {
+}
+
+
+
+table Remove (Activity) {
+}
+
+
+
+table Undo (Activity) {
+}
+
+
+
+table Update (Activity) {
+}
+
+
+
+table View (Activity) {
+}
+
+
+
+table Listen (Activity) {
+}
+
+
+
+table Read (Activity) {
+}
+
+
+
+table Move (Activity) {
+}
+
+
+
+table Travel (Activity) {
+}
+
+
+
+table Announce (Activity) {
+}
+
+
+
+table Block (Activity) {
+}
+
+
+
+table Flag (Activity) {
+}
+
+
+
+table Dislike (Activity) {
+}
+
+
+
+table Question (Activity) {
+}
+
+
+
+union ActivityStream { 
+    Accept,
+    TentativeAccept,
+    Add,
+    Arrive,
+    Create,
+    Delete,
+    Follow,
+    Ignore,
+    Join,
+    Leave,
+    Like,
+    Offer,
+    Invite,
+    Reject,
+    TentativeReject,
+    Remove,
+    Undo,
+    Update,
+    View,
+    Listen,
+    Read,
+    Move,
+    Travel,
+    Announce,
+    Block,
+    Flag,
+    Dislike,
+    Question,
+}
+
+union Actor { 
+    Application,
+    Group,
+    Organization,
+    Person,
+    Service,
+}
