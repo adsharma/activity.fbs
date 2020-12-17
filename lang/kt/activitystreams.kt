@@ -24,14 +24,14 @@ data class MimeType(
 )
 
 data class Bool(
-    val val: Boolean?,
+    val _val: Boolean?,
 )
 
 data class String(
-    val val: String?,
+    val _val: String?,
 )
 
-data class IntransitiveActivity(
+class IntransitiveActivity(
 )
 
 data class Activity(
@@ -55,7 +55,6 @@ data class Object(
     val image: ImageOrLink,
     val inReplyTo: ObjectOrLink,
     val location: ObjectOrLink,
-    val object: ObjectOrLink,
     val preview: ObjectOrLink,
     val replies: Collection,
     val tag: ObjectOrLink,
@@ -74,6 +73,7 @@ data class Object(
     val updated: Date,
     val likes: MaybeOrderedCollection,
     val shares: MaybeOrderedCollection,
+    val _object: ObjectOrLink,
 )
 
 data class Link(
@@ -101,7 +101,7 @@ data class OrderedCollection(
     val orderedItems: ObjectOrLink,
 )
 
-data class Question: IntransitiveActivity() (
+data class Question(
     val oneOf: ObjectOrLink,
     val anyOf: ObjectOrLink,
     val closed: Various,
@@ -144,7 +144,7 @@ data class Tombstone(
     val deleted: Date,
 )
 
-data class Application: Object() (
+data class Application(
     val inbox: OrderedCollection,
     val outbox: OrderedCollection,
     val following: MaybeOrderedCollection,
@@ -154,7 +154,7 @@ data class Application: Object() (
     val preferredUsername: String?,
 )
 
-data class Group: Object() (
+data class Group(
     val inbox: OrderedCollection,
     val outbox: OrderedCollection,
     val following: MaybeOrderedCollection,
@@ -164,7 +164,7 @@ data class Group: Object() (
     val preferredUsername: String?,
 )
 
-data class Organization: Object() (
+data class Organization(
     val inbox: OrderedCollection,
     val outbox: OrderedCollection,
     val following: MaybeOrderedCollection,
@@ -174,7 +174,7 @@ data class Organization: Object() (
     val preferredUsername: String?,
 )
 
-data class Person: Object() (
+data class Person(
     val inbox: OrderedCollection,
     val outbox: OrderedCollection,
     val following: MaybeOrderedCollection,
@@ -184,7 +184,7 @@ data class Person: Object() (
     val preferredUsername: String?,
 )
 
-data class Service: Object() (
+data class Service(
     val inbox: OrderedCollection,
     val outbox: OrderedCollection,
     val following: MaybeOrderedCollection,
@@ -192,90 +192,6 @@ data class Service: Object() (
     val liked: MaybeOrderedCollection,
     val streams: MaybeOrderedCollection,
     val preferredUsername: String?,
-)
-
-data class Accept: Activity() (
-)
-
-data class TentativeAccept: Activity() (
-)
-
-data class Add: Activity() (
-)
-
-data class Arrive: Activity() (
-)
-
-data class Create: Activity() (
-)
-
-data class Delete: Activity() (
-)
-
-data class Follow: Activity() (
-)
-
-data class Ignore: Activity() (
-)
-
-data class Join: Activity() (
-)
-
-data class Leave: Activity() (
-)
-
-data class Like: Activity() (
-)
-
-data class Offer: Activity() (
-)
-
-data class Invite: Activity() (
-)
-
-data class Reject: Activity() (
-)
-
-data class TentativeReject: Activity() (
-)
-
-data class Remove: Activity() (
-)
-
-data class Undo: Activity() (
-)
-
-data class Update: Activity() (
-)
-
-data class View: Activity() (
-)
-
-data class Listen: Activity() (
-)
-
-data class Read: Activity() (
-)
-
-data class Move: Activity() (
-)
-
-data class Travel: Activity() (
-)
-
-data class Announce: Activity() (
-)
-
-data class Block: Activity() (
-)
-
-data class Flag: Activity() (
-)
-
-data class Dislike: Activity() (
-)
-
-data class Question: Activity() (
 )
 
 sealed class PageOrLink {
